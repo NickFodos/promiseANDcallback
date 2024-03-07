@@ -1,7 +1,7 @@
 
 
 const myPromise = new Promise((resolve, reject) => {
-    const nome = "nomeTeste"
+    const nome = "Gojo"
     if (nome === "nomeTeste") {
         resolve('O nome indicado é identico')
     } else {
@@ -11,7 +11,7 @@ const myPromise = new Promise((resolve, reject) => {
 })
 
 myPromise.then((data) => {
-    return data.toUpperCase()
-}).then((smf) => {
-    console.log(smf)
+    console.log(data)
+}).catch((err) => {
+    console.log(`Aconteceu um erro: ${err}`)
 })
