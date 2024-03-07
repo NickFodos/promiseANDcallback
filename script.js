@@ -1,18 +1,19 @@
-try{
-
-    const myPromise = new Promise ((resolve,reject) => {
-        const nome = "nomeTeste"
-        if(nome === "nomeTeste") {
-            resolve ("O nome indicado é identico")
-        }else{
-            reject("O nome indicado não é identico")
+try {
+    const callback = (Ver) => {
+        console.log(`Sua idade é: ${Ver}`)
+    }
+    const VerIdade = new Promise((resolve, reject) => {
+        const idade = 18
+        if (idade >= 18) {
+            resolve("PERMITIDA!!")
+        } else {
+            reject("NÃO PERMITIDA!!")
         }
-
-        myPromise.then((data)=>{
-            console.log(data)
-        })
-    }) 
-
-}catch (err){
-    console.log(`Erro encontrado: ${err}`)
-}
+    })
+    VerIdade.then(callback).catch((err) => {
+        callback()
+        console.log(`Houve um erro no codigo: ${err}`)
+    })
+} catch (err) {
+    console.log(`Houve um erro no codigo: ${err}`)
+} 
