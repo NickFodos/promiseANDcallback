@@ -1,39 +1,24 @@
-//com all
+//Fetch request na API do github
+//Fetch API
+const UserName = "NickFodos"
+fetch(`https://api.github.com/users/${UserName}`, {
+    method: 'GET',
+    headers: {
+        Accept: 'Application/vnd.github.v3+json',
+    },
+}).then((resposta) => {
 
-const p1 = new Promise((resolve, reject) => {
-    setTimeout(() => {
-        resolve("P1 OKAY")
-    }, 3000)
-})
+    console.log(typeof resposta)
 
-const p2 = new Promise((resolve, reject) => {
-    resolve("P2 OKAY")
-})
+    console.log(resposta)
 
-const p3 = new Promise((resolve, reject) => {
-    resolve("P3 OKAY")
-})
+    return resposta.json()
 
-const AllPromise = Promise.all([p1, p2, p3]).then((data) => {
-    console.log(data)
-})
+}).then((data) => {
 
-//com race
+    console.log(`Seu nome é ${data.name}`)
 
-const b1 = new Promise((resolve, reject) => {
-    setTimeout(() => {
-        resolve("B1 OKAY")
-    }, 3000)
-})
+}).catch((err) => {
 
-const b2 = new Promise((resolve, reject) => {
-    resolve("B2 OKAY")
-})
-
-const b3 = new Promise((resolve, reject) => {
-    resolve("B3 OKAY")
-})
-
-const RacePromise = Promise.race([b1, b2, b3]).then((data) => {
-    console.log(data)
+    console.log(`Houve um erro: ${err}`)
 })
